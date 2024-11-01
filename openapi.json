@@ -8577,8 +8577,7 @@
       "Authorization": {
         "type": "apiKey",
         "in": "header",
-        "name": "Authorization",
-        "inputPrefix":"YOUR_TOKEN"
+        "name": "Authorization"
       }
     },
     "schemas": {

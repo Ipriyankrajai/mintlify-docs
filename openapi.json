@@ -8575,8 +8575,9 @@
   "components": {
     "securitySchemes": {
       "Authorization": {
-        "type": "http",
-        "scheme": "basic"
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
       }
     },
     "schemas": {

@@ -1,29 +1,33 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Enzo Health",
+  "name": "Enzo Health Docs",
+  "openapi": [
+    "/openapi.json"
+  ],
+  "feedback": {
+    "suggestEdit": true
+  },
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+    "primary": "#7c3aed",
+    "light": "#af87ff",
+    "dark": "#1e293b",
+    "background": {
+      "dark": "#030712",
+      "light": "#ffffff"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
+  "topbarLinks": [],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "App",
+    "url": "https://app.enzo.health"
+  },
+  "primaryTab": {
+    "name": "Learn"
   },
   "tabs": [
     {
@@ -31,61 +35,118 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
+  "anchors": [],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Getting Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "api-reference/authentication"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Workflow Run",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "api-reference/workflow-run/start",
+        "api-reference/workflow-run/start-preview"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Workflow",
       "pages": [
-        "api-reference/introduction"
+        "api-reference/workflow/list",
+        "api-reference/workflow/get",
+        "api-reference/workflow/create",
+        "api-reference/workflow/import",
+        "api-reference/workflow/update",
+        "api-reference/workflow/delete",
+        "api-reference/workflow/publish",
+        "api-reference/workflow/unpublish"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Results",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/results/list",
+        "api-reference/results/get",
+        "api-reference/results/delete",
+        "api-reference/results/list-logs"
+      ]
+    },
+    {
+      "group": "Webhook",
+      "pages": [
+        "api-reference/webhook/list-webhook-blocks",
+        "api-reference/webhook/subscribe-to-webhook-block",
+        "api-reference/webhook/unsubscribe-from-webhook-block"
+      ]
+    },
+    {
+      "group": "Processors",
+      "pages": [
+        "api-reference/processor/list-processors",
+        "api-reference/processor/get-a-processor",
+        "api-reference/processor/create-a-processor",
+        "api-reference/processor/update-a-processor",
+        "api-reference/processor/delete-a-processor"
+      ]
+    },
+    {
+      "group": "Credentials",
+      "pages": [
+        "api-reference/credentials/list-organization-credentials",
+        "api-reference/credentials/create-credentials",
+        "api-reference/credentials/delete-credentials"
+      ]
+    },
+    {
+      "group": "Organizations",
+      "pages": [
+        "api-reference/organization/list-organizations"
+      ]
+    },
+    {
+      "group": "Patients",
+      "pages": [
+        "api-reference/patients/get-patients-for-organization",
+        "api-reference/patient/search-patients"
+      ]
+    },
+    {
+      "group": "Voice Notes",
+      "pages": [
+        "api-reference/notes/list-notes",
+        "api-reference/voice-notes/create-a-new-voice-note",
+        "api-reference/voice-notes/update-voice-note-details",
+        "api-reference/voice-notes/delete-a-voice-note-and-related-records"
+      ]
+    },
+    {
+      "group": "Transcripts",
+      "pages": [
+        "api-reference/transcript/get-paginated-finalized-sentences-for-a-voice-note",
+        "api-reference/transcript/fetch-details-for-multiple-finalized-sentences",
+        "api-reference/transcript/search-sentences-by-embedding",
+        "api-reference/transcript/save-voice-note-audio"
+      ]
+    },
+    {
+      "group": "Folders",
+      "pages": [
+        "api-reference/folder/list-folders",
+        "api-reference/folder/get-folder",
+        "api-reference/folder/create-a-folder",
+        "api-reference/folder/update-a-folder",
+        "api-reference/folder/delete-a-folder"
+      ]
+    },
+    {
+      "group": "Visits",
+      "pages": [
+        "api-reference/visits/list-appointments"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "website": "https://enzo.health"
   }
 }

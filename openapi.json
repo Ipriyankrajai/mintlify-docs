@@ -8576,7 +8576,7 @@
     "securitySchemes": {
       "Authorization": {
         "type": "http",
-        "scheme": "Basic"
+        "scheme": "basic"
       }
     },
     "schemas": {

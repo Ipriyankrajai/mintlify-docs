@@ -4,7 +4,7 @@ title: "Authentication"
 
 Some API endpoints are protected, and therefore require that you authenticate using an API token.
 
-## Generate a token
+## Generate a token from Enzo
 
 1. Navigate to your workflow dashboard (https://app.enzo.health)
 2. Click on Settings & Members > My account
@@ -12,14 +12,24 @@ Some API endpoints are protected, and therefore require that you authenticate us
 4. Give it a name, then click on "Create token"
 5. Copy your token.
 
+
+## Generating a Token via POST Request
+
+To generate a token programmatically, use the following POST request:
+```sh
+curl -v -X POST 'https://app.enzo.health/api/auth/rest' \
+-H 'Content-Type: application/json' \
+-d '{"email":"your@email.com", "password":"YOUR_PASSWORD"}'
+```
+
 ## Use your token
 
-You can authenticate by adding an `Authorization` header to all your HTTP calls. The Authorization header is formatted as such: `Authorization: Bearer <token>` (replace `<token>` with your token previously generated).
+You can authenticate by adding an `Authorization` header to all your HTTP calls. The Authorization header is formatted as such: `Authorization: <token>` (replace `<token>` with your token previously generated).
 
 Example:
 
 ```sh
 curl -L -X GET 'https://app.enzo.health/api/workflows/:workflowId/results' \
 -H 'Accept: application/json' \
--H 'Authorization: Bearer yourToken'
+-H 'Authorization: yourToken'
 ```

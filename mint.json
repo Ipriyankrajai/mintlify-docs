@@ -134,7 +134,8 @@
         "api-reference/transcript/get-paginated-finalized-sentences-for-a-voice-note",
         "api-reference/transcript/fetch-details-for-multiple-finalized-sentences",
         "api-reference/transcript/search-sentences-by-embedding",
-        "api-reference/transcript/save-voice-note-audio"
+        "api-reference/transcript/save-voice-note-audio",
+        "api-reference/transcript/voice-note-survey"
       ]
     },
     {

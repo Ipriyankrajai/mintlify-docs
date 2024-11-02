@@ -6554,6 +6554,118 @@
         }
       }
     },
+    "/v1/notes/{voiceNoteId}/survey": {
+      "post": {
+        "operationId": "transcript-voiceNoteAudioSurvey",
+        "summary": "Voice note survey",
+        "tags": [
+          "Transcript"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "voiceNoteId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "templateType": {
+                    "type": "string",
+                    "enum": [
+                      "oasis",
+                      "soap",
+                      "custom"
+                    ]
+                  },
+                  "isDemo": {
+                    "type": "boolean",
+                    "default": true
+                  }
+                },
+                "required": [
+                  "templateType"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "questions": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "questions"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/notes/{voiceNoteId}/sentences": {
       "get": {
         "operationId": "transcript-getFinalizedSentencesByVoiceNotePagination",
@@ -7005,7 +7117,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-09-30T21:14:27.903Z"
+              "default": "2024-10-02T07:48:42.154Z"
             }
           },
           {
@@ -7013,7 +7125,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-10-31T21:14:27.903Z"
+              "default": "2024-11-02T07:48:42.155Z"
             }
           },
           {
@@ -7232,7 +7344,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-09-30T21:14:27.903Z"
+              "default": "2024-10-02T07:48:42.154Z"
             }
           },
           {
@@ -7240,7 +7352,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-10-31T21:14:27.903Z"
+              "default": "2024-11-02T07:48:42.155Z"
             }
           },
           {

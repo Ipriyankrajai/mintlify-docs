@@ -6414,6 +6414,132 @@
         }
       }
     },
+    "/v1/notes/{voiceNoteId}/audio-upload-url": {
+      "post": {
+        "operationId": "transcript-generateAudioUploadUrl",
+        "summary": "Generate audio upload URL",
+        "tags": [
+          "Transcript"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "voiceNoteId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "name",
+                      "size",
+                      "type"
+                    ]
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "url"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/notes/{voiceNoteId}/audio": {
       "post": {
         "operationId": "transcript-createVoiceNoteAudio",
@@ -7117,7 +7243,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-02T07:48:42.154Z"
+              "default": "2024-10-03T03:29:05.466Z"
             }
           },
           {
@@ -7125,7 +7251,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-02T07:48:42.155Z"
+              "default": "2024-11-03T03:29:05.469Z"
             }
           },
           {
@@ -7344,7 +7470,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-02T07:48:42.154Z"
+              "default": "2024-10-03T03:29:05.466Z"
             }
           },
           {
@@ -7352,7 +7478,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-02T07:48:42.155Z"
+              "default": "2024-11-03T03:29:05.469Z"
             }
           },
           {
@@ -8687,9 +8813,8 @@
   "components": {
     "securitySchemes": {
       "Authorization": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "Authorization"
+        "type": "http",
+        "scheme": "bearer"
       }
     },
     "schemas": {

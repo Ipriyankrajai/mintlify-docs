@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "mintlify dev --port 3004",
-    "generate-api": "tsx scripts/fetch-openapi.ts && npx @mintlify/scraping openapi-file openapi.json --outDir ./api-reference"
+    "generate-api": "tsx scripts/fetch-openapi.ts && npx @mintlify/scraping openapi-file openapi.json --outDir ./api-reference",
+    "generate": "npx @mintlify/scraping openapi-file openapi.json --outDir ./api-reference"
   },
   "devDependencies": {
-    "@mintlify/scraping": "^3.0.88",
+    "@mintlify/scraping": "^4.0.12",
     "@types/node": "^22.8.7",
-    "mintlify": "4.0.75"
+    "mintlify": "4.0.75",
+    "tsx": "^4.19.2"
   }
 }

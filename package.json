@@ -1,0 +1,14 @@
+{
+  "name": "mintlify-docs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "mintlify dev --port 3004",
+    "generate-api": "tsx scripts/fetch-openapi.ts && npx @mintlify/scraping openapi-file openapi.json --outDir ./api-reference"
+  },
+  "devDependencies": {
+    "@mintlify/scraping": "^3.0.88",
+    "@types/node": "^22.8.7",
+    "mintlify": "4.0.75"
+  }
+}

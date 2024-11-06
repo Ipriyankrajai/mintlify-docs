@@ -48,6 +48,7 @@
     {
       "group": "Getting Started",
       "pages": [
+        "api-reference/introduction",
         "api-reference/authentication"
       ]
     },
@@ -136,7 +137,9 @@
         "api-reference/transcript/search-sentences-by-embedding",
         "api-reference/transcript/save-voice-note-audio",
         "api-reference/transcript/voice-note-survey",
-        "api-reference/transcript/generate-audio-upload-url"
+        "api-reference/transcript/generate-audio-upload-url",
+        "api-reference/transcript/submit-voice-note-survey-answers",
+        "api-reference/transcript/voice-note-survey-1"
       ]
     },
     {

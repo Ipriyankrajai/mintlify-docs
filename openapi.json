@@ -6714,17 +6714,12 @@
                     "enum": [
                       "oasis",
                       "soap",
+                      "narrative",
                       "custom"
-                    ]
-                  },
-                  "isDemo": {
-                    "type": "boolean",
-                    "default": true
+                    ],
+                    "default": "oasis"
                   }
-                },
-                "required": [
-                  "templateType"
-                ]
+                }
               }
             }
           }
@@ -6739,7 +6734,107 @@
                   "properties": {
                     "questions": {
                       "type": "array",
-                      "items": {}
+                      "items": {
+                        "allOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "answerType": {
+                                    "type": "string",
+                                    "enum": [
+                                      "singleChoice"
+                                    ]
+                                  },
+                                  "options": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "value"
+                                      ]
+                                    }
+                                  },
+                                  "instructions": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "description",
+                                  "answerType",
+                                  "options",
+                                  "instructions"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "answerType": {
+                                    "type": "string",
+                                    "enum": [
+                                      "checkAll"
+                                    ]
+                                  },
+                                  "options": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "value"
+                                      ]
+                                    }
+                                  },
+                                  "instructions": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "description",
+                                  "answerType",
+                                  "options",
+                                  "instructions"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ]
+                          }
+                        ]
+                      }
                     }
                   },
                   "required": [
@@ -6775,6 +6870,213 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "surveys-voiceNoteAudioSurvey",
+        "summary": "Voice note survey",
+        "tags": [
+          "Transcript"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "voiceNoteId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "templateType",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "oasis",
+                "soap",
+                "narrative",
+                "custom"
+              ],
+              "default": "oasis"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "questions": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "answerType": {
+                                    "type": "string",
+                                    "enum": [
+                                      "singleChoice"
+                                    ]
+                                  },
+                                  "options": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "value"
+                                      ]
+                                    }
+                                  },
+                                  "instructions": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "description",
+                                  "answerType",
+                                  "options",
+                                  "instructions"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "answerType": {
+                                    "type": "string",
+                                    "enum": [
+                                      "checkAll"
+                                    ]
+                                  },
+                                  "options": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "value"
+                                      ]
+                                    }
+                                  },
+                                  "instructions": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "description",
+                                  "answerType",
+                                  "options",
+                                  "instructions"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "questions"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
                 }
               }
             }
@@ -7243,7 +7545,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-03T03:29:05.466Z"
+              "default": "2024-10-06T20:13:26.870Z"
             }
           },
           {
@@ -7251,7 +7553,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-03T03:29:05.469Z"
+              "default": "2024-11-06T20:13:26.872Z"
             }
           },
           {
@@ -7470,7 +7772,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-03T03:29:05.466Z"
+              "default": "2024-10-06T20:13:26.870Z"
             }
           },
           {
@@ -7478,7 +7780,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-03T03:29:05.469Z"
+              "default": "2024-11-06T20:13:26.872Z"
             }
           },
           {
@@ -8792,6 +9094,168 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/notes/{voiceNoteId}/survey/submit": {
+      "post": {
+        "operationId": "surveys-submitVoiceNoteSurvey",
+        "summary": "Submit voice note survey answers",
+        "tags": [
+          "Transcript"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "voiceNoteId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "answers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "questionId": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "questionId",
+                        "value"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "answers"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "answers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "surveyId": {
+                            "type": "string"
+                          },
+                          "questionId": {
+                            "type": "string"
+                          },
+                          "answerType": {
+                            "type": "string",
+                            "enum": [
+                              "singleChoice",
+                              "checkAll",
+                              "text",
+                              "date"
+                            ]
+                          },
+                          "value": {}
+                        },
+                        "required": [
+                          "id",
+                          "createdAt",
+                          "updatedAt",
+                          "surveyId",
+                          "questionId",
+                          "answerType"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "answers"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
                 }
               }
             }

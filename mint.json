@@ -157,6 +157,12 @@
       "pages": [
         "api-reference/visits/list-appointments"
       ]
+    },
+    {
+      "group": "OASIS",
+      "pages": [
+        "api-reference/oasis/save-oasis-for-a-job"
+      ]
     }
   ],
   "footerSocials": {

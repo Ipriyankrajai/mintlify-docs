@@ -6580,6 +6580,17 @@
                   },
                   "isProcessed": {
                     "type": "boolean"
+                  },
+                  "templateType": {
+                    "type": "string",
+                    "enum": [
+                      "narrative",
+                      "oasis"
+                    ]
+                  },
+                  "isDemo": {
+                    "type": "boolean",
+                    "default": true
                   }
                 },
                 "required": [
@@ -6735,91 +6746,50 @@
                     "questions": {
                       "type": "array",
                       "items": {
-                        "allOf": [
+                        "oneOf": [
                           {
-                            "oneOf": [
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "description": {
-                                    "type": "string"
-                                  },
-                                  "answerType": {
-                                    "type": "string",
-                                    "enum": [
-                                      "singleChoice"
-                                    ]
-                                  },
-                                  "options": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string"
-                                        },
-                                        "value": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "id",
-                                        "value"
-                                      ]
-                                    }
-                                  },
-                                  "instructions": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "description",
-                                  "answerType",
-                                  "options",
-                                  "instructions"
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "instructions": {
+                                "type": "string"
+                              },
+                              "answerType": {
+                                "type": "string",
+                                "enum": [
+                                  "singleChoice"
                                 ]
                               },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "description": {
-                                    "type": "string"
-                                  },
-                                  "answerType": {
-                                    "type": "string",
-                                    "enum": [
-                                      "checkAll"
-                                    ]
-                                  },
-                                  "options": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string"
-                                        },
-                                        "value": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "id",
-                                        "value"
-                                      ]
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
                                     }
                                   },
-                                  "instructions": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "description",
-                                  "answerType",
-                                  "options",
-                                  "instructions"
-                                ]
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ]
+                                }
                               }
+                            },
+                            "required": [
+                              "id",
+                              "description",
+                              "instructions",
+                              "answerType",
+                              "options"
                             ]
                           },
                           {
@@ -6827,10 +6797,132 @@
                             "properties": {
                               "id": {
                                 "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "instructions": {
+                                "type": "string"
+                              },
+                              "answerType": {
+                                "type": "string",
+                                "enum": [
+                                  "checkAll"
+                                ]
+                              },
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ]
+                                }
                               }
                             },
                             "required": [
-                              "id"
+                              "id",
+                              "description",
+                              "instructions",
+                              "answerType",
+                              "options"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "instructions": {
+                                "type": "string"
+                              },
+                              "answerType": {
+                                "type": "string",
+                                "enum": [
+                                  "text"
+                                ]
+                              },
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "description",
+                              "instructions",
+                              "answerType"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "instructions": {
+                                "type": "string"
+                              },
+                              "answerType": {
+                                "type": "string",
+                                "enum": [
+                                  "date"
+                                ]
+                              },
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "description",
+                              "instructions",
+                              "answerType"
                             ]
                           }
                         ]
@@ -6913,9 +7005,7 @@
               "type": "string",
               "enum": [
                 "oasis",
-                "soap",
-                "narrative",
-                "custom"
+                "narrative"
               ],
               "default": "oasis"
             }
@@ -6932,91 +7022,50 @@
                     "questions": {
                       "type": "array",
                       "items": {
-                        "allOf": [
+                        "oneOf": [
                           {
-                            "oneOf": [
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "description": {
-                                    "type": "string"
-                                  },
-                                  "answerType": {
-                                    "type": "string",
-                                    "enum": [
-                                      "singleChoice"
-                                    ]
-                                  },
-                                  "options": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string"
-                                        },
-                                        "value": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "id",
-                                        "value"
-                                      ]
-                                    }
-                                  },
-                                  "instructions": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "description",
-                                  "answerType",
-                                  "options",
-                                  "instructions"
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "instructions": {
+                                "type": "string"
+                              },
+                              "answerType": {
+                                "type": "string",
+                                "enum": [
+                                  "singleChoice"
                                 ]
                               },
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "description": {
-                                    "type": "string"
-                                  },
-                                  "answerType": {
-                                    "type": "string",
-                                    "enum": [
-                                      "checkAll"
-                                    ]
-                                  },
-                                  "options": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string"
-                                        },
-                                        "value": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "id",
-                                        "value"
-                                      ]
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
                                     }
                                   },
-                                  "instructions": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "description",
-                                  "answerType",
-                                  "options",
-                                  "instructions"
-                                ]
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ]
+                                }
                               }
+                            },
+                            "required": [
+                              "id",
+                              "description",
+                              "instructions",
+                              "answerType",
+                              "options"
                             ]
                           },
                           {
@@ -7024,10 +7073,132 @@
                             "properties": {
                               "id": {
                                 "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "instructions": {
+                                "type": "string"
+                              },
+                              "answerType": {
+                                "type": "string",
+                                "enum": [
+                                  "checkAll"
+                                ]
+                              },
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ]
+                                }
                               }
                             },
                             "required": [
-                              "id"
+                              "id",
+                              "description",
+                              "instructions",
+                              "answerType",
+                              "options"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "instructions": {
+                                "type": "string"
+                              },
+                              "answerType": {
+                                "type": "string",
+                                "enum": [
+                                  "text"
+                                ]
+                              },
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "description",
+                              "instructions",
+                              "answerType"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "instructions": {
+                                "type": "string"
+                              },
+                              "answerType": {
+                                "type": "string",
+                                "enum": [
+                                  "date"
+                                ]
+                              },
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "description",
+                              "instructions",
+                              "answerType"
                             ]
                           }
                         ]
@@ -7132,6 +7303,14 @@
               "maximum": 100,
               "default": 5
             }
+          },
+          {
+            "in": "query",
+            "name": "isPaginated",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
           }
         ],
         "responses": {
@@ -7178,6 +7357,195 @@
                         ]
                       }
                     },
+                    "patient": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "firstname": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "middlename": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "lastname": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "email": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "suffix": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "image": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "dob": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "deceased": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "sex": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fmrn": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "omrn": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ssn": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "address": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "state": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "stateZIP": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "county": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "aptNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "homePhone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "workPhone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "cellPhone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fax": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "language": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "locationType": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "residenceType": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "residenceName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "timezone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "physician": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionSource": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "insuranceProvider": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "medicareNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "medicaidNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "organizationId": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "firstname",
+                        "middlename",
+                        "lastname",
+                        "email",
+                        "suffix",
+                        "image",
+                        "dob",
+                        "deceased",
+                        "sex",
+                        "fmrn",
+                        "omrn",
+                        "ssn",
+                        "address",
+                        "city",
+                        "state",
+                        "stateZIP",
+                        "county",
+                        "aptNumber",
+                        "homePhone",
+                        "workPhone",
+                        "cellPhone",
+                        "fax",
+                        "language",
+                        "locationType",
+                        "residenceType",
+                        "residenceName",
+                        "timezone",
+                        "physician",
+                        "admissionSource",
+                        "insuranceProvider",
+                        "medicareNumber",
+                        "medicaidNumber",
+                        "organizationId",
+                        "createdAt",
+                        "updatedAt"
+                      ]
+                    },
                     "nextCursor": {
                       "type": "string",
                       "nullable": true
@@ -7185,6 +7553,7 @@
                   },
                   "required": [
                     "items",
+                    "patient",
                     "nextCursor"
                   ]
                 }
@@ -7545,7 +7914,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-06T20:13:26.870Z"
+              "default": "2024-10-20T06:12:58.238Z"
             }
           },
           {
@@ -7553,7 +7922,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-06T20:13:26.872Z"
+              "default": "2024-11-20T06:12:58.238Z"
             }
           },
           {
@@ -7623,13 +7992,16 @@
                           "title": {
                             "type": "string"
                           },
-                          "createdAt": {
-                            "type": "string"
-                          },
                           "start": {
                             "type": "string"
                           },
                           "end": {
+                            "type": "string"
+                          },
+                          "patientId": {
+                            "type": "string"
+                          },
+                          "resourceId": {
                             "type": "string"
                           },
                           "organizationId": {
@@ -7639,23 +8011,68 @@
                             "type": "number",
                             "nullable": true
                           },
-                          "patientId": {
+                          "createdAt": {
                             "type": "string"
                           },
-                          "resourceId": {
-                            "type": "string"
+                          "patient": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "firstname": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "lastname": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "email": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "dob": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "sex": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "fmrn": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "phone": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "address": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ]
                           }
                         },
                         "required": [
                           "id",
                           "title",
-                          "createdAt",
                           "start",
                           "end",
+                          "patientId",
+                          "resourceId",
                           "organizationId",
                           "order",
-                          "patientId",
-                          "resourceId"
+                          "createdAt",
+                          "patient"
                         ]
                       }
                     },
@@ -7772,7 +8189,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-06T20:13:26.870Z"
+              "default": "2024-10-20T06:12:58.238Z"
             }
           },
           {
@@ -7780,7 +8197,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-06T20:13:26.872Z"
+              "default": "2024-11-20T06:12:58.238Z"
             }
           },
           {
@@ -7940,6 +8357,9 @@
                     "type": "string"
                   },
                   "jobId": {
+                    "type": "string"
+                  },
+                  "appointmentId": {
                     "type": "string"
                   }
                 },
@@ -8266,7 +8686,16 @@
             "in": "query",
             "name": "limit",
             "schema": {
-              "type": "number"
+              "type": "number",
+              "default": 20
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number",
+              "default": 1
             }
           },
           {
@@ -9225,6 +9654,335 @@
                   "required": [
                     "success",
                     "answers"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/oasis/saveOasisForJob": {
+      "post": {
+        "operationId": "oasis-saveOasisForJob",
+        "summary": "Save OASIS for a job",
+        "tags": [
+          "OASIS"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "voiceNoteId": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "properties": {
+                        "originalAnswer": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        },
+                        "enzoAnswer": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        },
+                        "finalAnswer": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        },
+                        "originalOrder": {
+                          "type": "number"
+                        },
+                        "enzoOrder": {
+                          "type": "number"
+                        },
+                        "reason": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "oasis": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "sectionId": {
+                          "type": "string"
+                        },
+                        "sectionTitle": {
+                          "type": "string"
+                        },
+                        "sectionCode": {
+                          "type": "string"
+                        },
+                        "questions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "code": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "isAbstract": {
+                                "type": "boolean",
+                                "nullable": true
+                              },
+                              "order": {
+                                "type": "number"
+                              },
+                              "parentId": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "answerType": {
+                                "type": "string"
+                              },
+                              "dataType": {
+                                "type": "string"
+                              },
+                              "possibleAnswers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "desc": {
+                                      "type": "string",
+                                      "nullable": true
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "value",
+                                    "title",
+                                    "desc"
+                                  ]
+                                }
+                              },
+                              "jobAnswer": {
+                                "type": "object",
+                                "properties": {
+                                  "originalAnswer": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "enzoAnswer": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "finalAnswer": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "reason": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "originalOrder": {
+                                    "type": "number"
+                                  },
+                                  "enzoOrder": {
+                                    "type": "number"
+                                  }
+                                }
+                              },
+                              "oasisType": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "SOC_ROC",
+                                    "FOLLOW_UP",
+                                    "DISCHARGE"
+                                  ]
+                                }
+                              },
+                              "sectionId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "code",
+                              "title",
+                              "description",
+                              "isAbstract",
+                              "order",
+                              "parentId",
+                              "answerType",
+                              "dataType",
+                              "possibleAnswers",
+                              "jobAnswer",
+                              "oasisType",
+                              "sectionId"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "sectionId",
+                        "sectionTitle",
+                        "sectionCode",
+                        "questions"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "voiceNoteId",
+                  "data",
+                  "oasis"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "summaryId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "summaryId"
                   ]
                 }
               }

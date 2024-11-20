@@ -161,7 +161,8 @@
     {
       "group": "OASIS",
       "pages": [
-        "api-reference/oasis/save-oasis-for-a-job"
+        "api-reference/oasis/save-oasis-for-a-job",
+        "api-reference/oasis/get-oasis-by-job-id"
       ]
     }
   ],

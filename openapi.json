@@ -7270,7 +7270,7 @@
         "operationId": "transcript-generateAudioFileUrl",
         "summary": "Generate presigned voice note audio URL",
         "tags": [
-          "Notes"
+          "Transcript"
         ],
         "security": [
           {
@@ -8000,7 +8000,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-20T13:38:22.254Z"
+              "default": "2024-10-20T13:44:06.876Z"
             }
           },
           {
@@ -8008,7 +8008,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-20T13:38:22.254Z"
+              "default": "2024-11-20T13:44:06.876Z"
             }
           },
           {
@@ -8275,7 +8275,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-20T13:38:22.254Z"
+              "default": "2024-10-20T13:44:06.876Z"
             }
           },
           {
@@ -8283,7 +8283,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-20T13:38:22.254Z"
+              "default": "2024-11-20T13:44:06.876Z"
             }
           },
           {

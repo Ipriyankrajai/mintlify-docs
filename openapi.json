@@ -7265,6 +7265,92 @@
         }
       }
     },
+    "/v1/notes/{voiceNoteId}/generateAudioFileUrl": {
+      "get": {
+        "operationId": "transcript-generateAudioFileUrl",
+        "summary": "Generate presigned voice note audio URL",
+        "tags": [
+          "Notes"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "voiceNoteId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/notes/{voiceNoteId}/sentences": {
       "get": {
         "operationId": "transcript-getFinalizedSentencesByVoiceNotePagination",
@@ -7914,7 +8000,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-20T12:28:29.697Z"
+              "default": "2024-10-20T13:38:22.254Z"
             }
           },
           {
@@ -7922,7 +8008,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-20T12:28:29.697Z"
+              "default": "2024-11-20T13:38:22.254Z"
             }
           },
           {
@@ -8189,7 +8275,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-20T12:28:29.697Z"
+              "default": "2024-10-20T13:38:22.254Z"
             }
           },
           {
@@ -8197,7 +8283,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-20T12:28:29.697Z"
+              "default": "2024-11-20T13:38:22.254Z"
             }
           },
           {

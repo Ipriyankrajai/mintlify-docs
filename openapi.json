@@ -7914,7 +7914,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-20T06:12:58.238Z"
+              "default": "2024-10-20T12:28:29.697Z"
             }
           },
           {
@@ -7922,7 +7922,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-20T06:12:58.238Z"
+              "default": "2024-11-20T12:28:29.697Z"
             }
           },
           {
@@ -8189,7 +8189,7 @@
             "name": "from",
             "schema": {
               "type": "string",
-              "default": "2024-10-20T06:12:58.238Z"
+              "default": "2024-10-20T12:28:29.697Z"
             }
           },
           {
@@ -8197,7 +8197,7 @@
             "name": "to",
             "schema": {
               "type": "string",
-              "default": "2024-11-20T06:12:58.238Z"
+              "default": "2024-11-20T12:28:29.697Z"
             }
           },
           {
@@ -9685,6 +9685,268 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/oasis/getOasisByJobId": {
+      "get": {
+        "operationId": "oasis-getOasisByJobId",
+        "summary": "Get OASIS by job ID",
+        "tags": [
+          "OASIS"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "jobId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sectionId": {
+                        "type": "string"
+                      },
+                      "sectionTitle": {
+                        "type": "string"
+                      },
+                      "sectionCode": {
+                        "type": "string"
+                      },
+                      "questions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "code": {
+                              "type": "string"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "isAbstract": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "order": {
+                              "type": "number"
+                            },
+                            "parentId": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "answerType": {
+                              "type": "string"
+                            },
+                            "dataType": {
+                              "type": "string"
+                            },
+                            "possibleAnswers": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "desc": {
+                                    "type": "string",
+                                    "nullable": true
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "value",
+                                  "title",
+                                  "desc"
+                                ]
+                              }
+                            },
+                            "jobAnswer": {
+                              "type": "object",
+                              "properties": {
+                                "originalAnswer": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "enzoAnswer": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "finalAnswer": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "reason": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "originalOrder": {
+                                  "type": "number"
+                                },
+                                "enzoOrder": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "oasisType": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "SOC_ROC",
+                                  "FOLLOW_UP",
+                                  "DISCHARGE"
+                                ]
+                              }
+                            },
+                            "sectionId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "code",
+                            "title",
+                            "description",
+                            "isAbstract",
+                            "order",
+                            "parentId",
+                            "answerType",
+                            "dataType",
+                            "possibleAnswers",
+                            "jobAnswer",
+                            "oasisType",
+                            "sectionId"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "sectionId",
+                      "sectionTitle",
+                      "sectionCode",
+                      "questions"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
                 }
               }
             }

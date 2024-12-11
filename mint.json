@@ -162,8 +162,9 @@
     {
       "group": "OASIS",
       "pages": [
-        "api-reference/oasis/save-oasis-for-a-job",
-        "api-reference/oasis/get-oasis-by-job-id"
+        "api-reference/oasis/get-oasis-by-job-id",
+        "api-reference/oasis/get-oasis-by-voice-note-id",
+        "api-reference/oasis/save-oasis-for-a-job"
       ]
     }
   ],

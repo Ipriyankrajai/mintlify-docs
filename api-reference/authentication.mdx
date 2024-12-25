@@ -4,14 +4,14 @@ title: "Authentication"
 
 Some API endpoints are protected, and therefore require that you authenticate using an API token.
 
-
 ## Generating a Token via POST Request
 
 To generate a token programmatically, use the following POST request:
+
 ```sh
 curl -v -X POST 'https://app.enzo.health/api/auth/rest' \
 -H 'Content-Type: application/json' \
--d '{"email":"your@email.com", "password":"YOUR_PASSWORD"}'
+-d '{"email":"your@email.com", "password":"YOUR_PASSWORD", "fcmToken":"FIREBASE_TOKEN", "appVersion":"0.0.1", "deviceType":"IOS"}'
 ```
 
 ## Use your token

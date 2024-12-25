@@ -14,6 +14,14 @@ curl -v -X POST 'https://app.enzo.health/api/auth/rest' \
 -d '{"email":"your@email.com", "password":"YOUR_PASSWORD", "fcmToken":"FIREBASE_TOKEN", "appVersion":"0.0.1", "deviceType":"IOS"}'
 ```
 
+The request body accepts the following parameters:
+
+- `email` (required): Your email address
+- `password` (required): Your password
+- `fcmToken` (optional): Firebase Cloud Messaging token
+- `appVersion` (optional): Current version of the app
+- `deviceType` (optional): Device type, valid options are "IOS", "ANDROID", "WEB"
+
 ## Use your token
 
 You can authenticate by adding an `Authorization` header to all your HTTP calls. The Authorization header is formatted as such: `Authorization: <token>` (replace `<token>` with your token previously generated).

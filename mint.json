@@ -139,7 +139,6 @@
         "api-reference/transcript/voice-note-survey",
         "api-reference/transcript/generate-audio-upload-url",
         "api-reference/transcript/submit-voice-note-survey-answers",
-        "api-reference/transcript/voice-note-survey-1",
         "api-reference/transcript/generate-presigned-voice-note-audio-url"
       ]
     },

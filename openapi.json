@@ -343,196 +343,6 @@
         }
       }
     },
-    "/v1/workflowRuns/{workflowId}/preview/start": {
-      "post": {
-        "operationId": "workflow-startWorkflowRunPreview",
-        "summary": "Start preview workflow run",
-        "description": "Use this endpoint to test your workflow.",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "workflowId",
-            "description": "[Where to find my workflow's ID?](../how-to#how-to-find-my-workflowid)",
-            "schema": {
-              "type": "string",
-              "description": "[Where to find my workflow's ID?](../how-to#how-to-find-my-workflowid)"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "workflow": {
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/workflowV1"
-                      },
-                      {
-                        "description": "If set, it will override the workflow that is used to start the workflow run."
-                      }
-                    ]
-                  },
-                  "startFrom": {
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "properties": {
-                          "type": {
-                            "type": "string",
-                            "enum": [
-                              "group"
-                            ]
-                          },
-                          "groupId": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "groupId"
-                        ]
-                      },
-                      {
-                        "type": "object",
-                        "properties": {
-                          "type": {
-                            "type": "string",
-                            "enum": [
-                              "event"
-                            ]
-                          },
-                          "eventId": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "eventId"
-                        ]
-                      }
-                    ]
-                  },
-                  "prefilledVariables": {
-                    "type": "object",
-                    "additionalProperties": {},
-                    "description": "[More info about prefilled variables.](../../editor/variables#prefilled-variables)",
-                    "example": {
-                      "First name": "John",
-                      "Email": "john@gmail.com"
-                    }
-                  },
-                  "sessionId": {
-                    "type": "string",
-                    "description": "If provided, will be used as the session ID and will overwrite any existing session with the same ID."
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "sessionId": {
-                      "type": "string",
-                      "description": "To save and use for /continue requests."
-                    },
-                    "workflowExecutionId": {
-                      "type": "string"
-                    },
-                    "workflow": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "id"
-                      ]
-                    },
-                    "logs": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "status": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "details": {}
-                        },
-                        "required": [
-                          "status",
-                          "description"
-                        ]
-                      },
-                      "description": "Logs that were saved during the last execution"
-                    },
-                    "progress": {
-                      "type": "number",
-                      "description": "If enabled, this field will return a number between 0 and 100 indicating the current progress based on the longest remaining path of the workflow run."
-                    },
-                    "event": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "name"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "sessionId",
-                    "workflow",
-                    "event"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/workflows": {
       "post": {
         "operationId": "workflow-createWorkflow",
@@ -8423,6 +8233,15 @@
                         "type": "string",
                         "nullable": true
                       },
+                      "creationMode": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "MANUAL",
+                          "AUTOMATED",
+                          null
+                        ]
+                      },
                       "record": {
                         "type": "string",
                         "enum": [
@@ -8682,6 +8501,7 @@
                 "insuranceProvider",
                 "medicareNumber",
                 "medicaidNumber",
+                "creationMode",
                 "record",
                 "stage",
                 "organizationId",
@@ -8890,6 +8710,15 @@
                             "type": "string",
                             "nullable": true
                           },
+                          "creationMode": {
+                            "type": "string",
+                            "nullable": true,
+                            "enum": [
+                              "MANUAL",
+                              "AUTOMATED",
+                              null
+                            ]
+                          },
                           "record": {
                             "type": "string",
                             "enum": [
@@ -9075,6 +8904,333 @@
         }
       }
     },
+    "/v1/patients/surge-account": {
+      "get": {
+        "operationId": "patients-getPatientsForSurgeAccount",
+        "summary": "Get patient details for surge account",
+        "tags": [
+          "Patients"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "number",
+              "default": 20
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "firstname": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "middlename": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "lastname": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "email": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "suffix": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "image": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "dob": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "deceased": {
+                        "type": "boolean",
+                        "nullable": true
+                      },
+                      "sex": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "fmrn": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "omrn": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "ssn": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "state": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "stateZIP": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "county": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "aptNumber": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "phone": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "homePhone": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "workPhone": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "cellPhone": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "fax": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "language": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "locationType": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "HOME",
+                          "ASSISTED_FACILITY",
+                          "OTHER",
+                          null
+                        ]
+                      },
+                      "residenceType": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "HOME",
+                          "SNF",
+                          "NF",
+                          "ASSISTED_FACILITY",
+                          null
+                        ]
+                      },
+                      "residenceName": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "timezone": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "EST",
+                          "CST",
+                          "MST",
+                          "PST",
+                          "AST",
+                          "HST",
+                          "AK",
+                          null
+                        ]
+                      },
+                      "physician": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "admissionSource": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "NON_HEALTH_CARE_FACILITY",
+                          "CLINIC",
+                          "HOSPITAL",
+                          "SNF",
+                          "HEALTH_CARE_FACILITY",
+                          "COURT_LAW",
+                          "NA",
+                          null
+                        ]
+                      },
+                      "insuranceProvider": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "medicareNumber": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "medicaidNumber": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "creationMode": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "MANUAL",
+                          "AUTOMATED",
+                          null
+                        ]
+                      },
+                      "record": {
+                        "type": "string",
+                        "enum": [
+                          "CAREGIVER",
+                          "PATIENT",
+                          "OTHER"
+                        ]
+                      },
+                      "stage": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "LEAD",
+                          "QUALIFIED",
+                          "OPPORTUNITY",
+                          "LOST",
+                          "WON",
+                          null
+                        ]
+                      },
+                      "organizationId": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      },
+                      "surgeContactId": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "record",
+                      "organizationId",
+                      "createdAt",
+                      "updatedAt"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/notes/{voiceNoteId}/survey": {
       "post": {
         "operationId": "surveys-voiceNoteAudioSurvey",
@@ -9142,12 +9298,31 @@
                             "type": "number"
                           },
                           "answerType": {
-                            "type": "string",
-                            "enum": [
-                              "singleChoice",
-                              "checkAll",
-                              "text",
-                              "date"
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "singleChoice"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "checkAll"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "text"
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "date"
+                                ]
+                              }
                             ]
                           },
                           "options": {
@@ -9189,12 +9364,31 @@
                                   "type": "number"
                                 },
                                 "answerType": {
-                                  "type": "string",
-                                  "enum": [
-                                    "singleChoice",
-                                    "checkAll",
-                                    "text",
-                                    "date"
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "singleChoice"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "checkAll"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "text"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "date"
+                                      ]
+                                    }
                                   ]
                                 },
                                 "options": {
@@ -9279,6 +9473,9 @@
                           "answerType"
                         ]
                       }
+                    },
+                    "unansweredQuestionId": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -11724,181 +11921,6 @@
           "message": "Internal server error",
           "issues": []
         }
-      },
-      "workflowV1": {
-        "type": "object",
-        "properties": {
-          "version": {
-            "type": "string",
-            "default": "1"
-          },
-          "id": {
-            "type": "string"
-          },
-          "organizationId": {
-            "type": "string"
-          },
-          "groups": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "graphCoordinates": {
-                  "type": "object",
-                  "properties": {
-                    "x": {
-                      "type": "number"
-                    },
-                    "y": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
-                },
-                "blocks": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/block"
-                  }
-                }
-              },
-              "required": [
-                "id",
-                "title",
-                "graphCoordinates",
-                "blocks"
-              ]
-            }
-          },
-          "events": {
-            "type": "array",
-            "maxItems": 1,
-            "minItems": 1,
-            "items": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/event"
-                }
-              ]
-            }
-          },
-          "edges": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "from": {
-                  "anyOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "blockId": {
-                          "type": "string"
-                        },
-                        "itemId": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "blockId"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "eventId": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "eventId"
-                      ]
-                    }
-                  ]
-                },
-                "to": {
-                  "type": "object",
-                  "properties": {
-                    "groupId": {
-                      "type": "string"
-                    },
-                    "blockId": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "groupId"
-                  ]
-                }
-              },
-              "required": [
-                "id",
-                "from",
-                "to"
-              ]
-            }
-          },
-          "variables": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "groupId": {
-                  "type": "string"
-                },
-                "isSessionVariable": {
-                  "type": "boolean"
-                },
-                "value": {
-                  "nullable": true,
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "nullable": true
-                      }
-                    }
-                  ]
-                }
-              },
-              "required": [
-                "id",
-                "name"
-              ]
-            }
-          }
-        },
-        "required": [
-          "id",
-          "organizationId",
-          "groups",
-          "events",
-          "edges",
-          "variables"
-        ],
-        "title": "Workflow V1"
       },
       "event": {
         "type": "object",

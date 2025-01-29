@@ -10547,6 +10547,553 @@
           }
         }
       }
+    },
+    "/v1/subscribers/{subscriberId}/notifications/feed": {
+      "get": {
+        "operationId": "subscribers-getNotificationsForSubscriber",
+        "summary": "Get notifications feed for a subscriber",
+        "tags": [
+          "Subscribers"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subscriberId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number",
+              "default": 1
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "number",
+              "default": 10
+            }
+          },
+          {
+            "in": "query",
+            "name": "seen",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "read",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "cta": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string"
+                              },
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "url"
+                                ]
+                              },
+                              "action": {
+                                "type": "object",
+                                "properties": {
+                                  "buttons": {
+                                    "type": "array",
+                                    "items": {}
+                                  }
+                                },
+                                "required": [
+                                  "buttons"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "data",
+                              "action"
+                            ]
+                          },
+                          "_id": {
+                            "type": "string"
+                          },
+                          "_templateId": {
+                            "type": "string"
+                          },
+                          "_environmentId": {
+                            "type": "string"
+                          },
+                          "_messageTemplateId": {
+                            "type": "string"
+                          },
+                          "_notificationId": {
+                            "type": "string"
+                          },
+                          "_organizationId": {
+                            "type": "string"
+                          },
+                          "_subscriberId": {
+                            "type": "string"
+                          },
+                          "_jobId": {
+                            "type": "string"
+                          },
+                          "templateIdentifier": {
+                            "type": "string"
+                          },
+                          "_feedId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "channel": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "providerId": {
+                            "type": "string"
+                          },
+                          "deviceTokens": {
+                            "type": "array",
+                            "items": {}
+                          },
+                          "seen": {
+                            "type": "boolean"
+                          },
+                          "read": {
+                            "type": "boolean"
+                          },
+                          "archived": {
+                            "type": "boolean"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "transactionId": {
+                            "type": "string"
+                          },
+                          "payload": {},
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "deleted": {
+                            "type": "boolean"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "__v": {
+                            "type": "number"
+                          },
+                          "lastSeenDate": {
+                            "type": "string"
+                          },
+                          "lastReadDate": {
+                            "type": "string"
+                          },
+                          "subscriber": {
+                            "type": "object",
+                            "properties": {
+                              "_id": {
+                                "type": "string"
+                              },
+                              "subscriberId": {
+                                "type": "string"
+                              },
+                              "firstName": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "_id",
+                              "subscriberId",
+                              "firstName",
+                              "id"
+                            ]
+                          },
+                          "template": {
+                            "type": "object",
+                            "properties": {
+                              "_id": {
+                                "type": "string"
+                              },
+                              "tags": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "_id",
+                              "tags",
+                              "id"
+                            ]
+                          },
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "cta",
+                          "_id",
+                          "_templateId",
+                          "_environmentId",
+                          "_messageTemplateId",
+                          "_notificationId",
+                          "_organizationId",
+                          "_subscriberId",
+                          "_jobId",
+                          "templateIdentifier",
+                          "_feedId",
+                          "channel",
+                          "content",
+                          "providerId",
+                          "deviceTokens",
+                          "seen",
+                          "read",
+                          "archived",
+                          "status",
+                          "transactionId",
+                          "tags",
+                          "deleted",
+                          "createdAt",
+                          "updatedAt",
+                          "__v",
+                          "lastSeenDate",
+                          "lastReadDate",
+                          "subscriber",
+                          "template",
+                          "id"
+                        ]
+                      }
+                    },
+                    "totalCount": {
+                      "type": "number"
+                    },
+                    "hasMore": {
+                      "type": "boolean"
+                    },
+                    "pageSize": {
+                      "type": "number"
+                    },
+                    "page": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "totalCount",
+                    "hasMore",
+                    "pageSize",
+                    "page"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/subscribers/{subscriberId}/notifications/unseen": {
+      "get": {
+        "operationId": "subscribers-getUnseenNotificationCount",
+        "summary": "Get count of unseen notifications for a subscriber",
+        "tags": [
+          "Subscribers"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subscriberId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "count"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/subscribers/{subscriberId}/messages/mark-as": {
+      "post": {
+        "operationId": "subscribers-markNotification",
+        "summary": "Mark a notification as seen and/or read",
+        "tags": [
+          "Subscribers"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subscriberId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "messageId": {
+                    "type": "string"
+                  },
+                  "seen": {
+                    "type": "boolean"
+                  },
+                  "read": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "messageId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "success"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

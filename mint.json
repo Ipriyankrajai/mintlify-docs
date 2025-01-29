@@ -165,6 +165,14 @@
         "api-reference/oasis/get-oasis-by-voice-note-id",
         "api-reference/oasis/save-oasis-for-a-job"
       ]
+    },
+    {
+      "group": "Subscribers",
+      "pages": [
+        "api-reference/subscribers/get-notifications-feed-for-a-subscriber",
+        "api-reference/subscribers/get-count-of-unseen-notifications-for-a-subscriber",
+        "api-reference/subscribers/mark-a-notification-as-seen-andor-read"
+      ]
     }
   ],
   "footerSocials": {

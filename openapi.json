@@ -8422,6 +8422,315 @@
         }
       }
     },
+    "/v1/patient/{patientId}": {
+      "get": {
+        "operationId": "patients-getPatientById",
+        "summary": "Get patient by id",
+        "tags": [
+          "Patients"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "patientId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "firstname": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "middlename": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "lastname": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "email": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "suffix": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "dob": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "deceased": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "sex": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "fmrn": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "omrn": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "ssn": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "address": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "city": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "state": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "stateZIP": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "county": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "aptNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "phone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "homePhone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "workPhone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cellPhone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "fax": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "language": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "locationType": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "HOME",
+                        "ASSISTED_FACILITY",
+                        "OTHER",
+                        null
+                      ]
+                    },
+                    "residenceType": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "HOME",
+                        "SNF",
+                        "NF",
+                        "ASSISTED_FACILITY",
+                        null
+                      ]
+                    },
+                    "residenceName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "timezone": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "EST",
+                        "CST",
+                        "MST",
+                        "PST",
+                        "AST",
+                        "HST",
+                        "AK",
+                        null
+                      ]
+                    },
+                    "physician": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "admissionSource": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "NON_HEALTH_CARE_FACILITY",
+                        "CLINIC",
+                        "HOSPITAL",
+                        "SNF",
+                        "HEALTH_CARE_FACILITY",
+                        "COURT_LAW",
+                        "NA",
+                        null
+                      ]
+                    },
+                    "insuranceProvider": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "medicareNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "medicaidNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "creationMode": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "MANUAL",
+                        "AUTOMATED",
+                        null
+                      ]
+                    },
+                    "record": {
+                      "type": "string",
+                      "enum": [
+                        "CAREGIVER",
+                        "PATIENT",
+                        "OTHER"
+                      ]
+                    },
+                    "stage": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "LEAD",
+                        "QUALIFIED",
+                        "OPPORTUNITY",
+                        "LOST",
+                        "WON",
+                        null
+                      ]
+                    },
+                    "organizationId": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "surgeContactId": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "record",
+                    "organizationId",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/patients/search": {
       "get": {
         "operationId": "patients-search",
@@ -10616,6 +10925,19 @@
                           "cta": {
                             "type": "object",
                             "properties": {
+                              "action": {
+                                "type": "object",
+                                "properties": {
+                                  "buttons": {
+                                    "type": "array",
+                                    "items": {},
+                                    "default": []
+                                  }
+                                },
+                                "required": [
+                                  "buttons"
+                                ]
+                              },
                               "type": {
                                 "type": "string"
                               },
@@ -10629,24 +10951,11 @@
                                 "required": [
                                   "url"
                                 ]
-                              },
-                              "action": {
-                                "type": "object",
-                                "properties": {
-                                  "buttons": {
-                                    "type": "array",
-                                    "items": {}
-                                  }
-                                },
-                                "required": [
-                                  "buttons"
-                                ]
                               }
                             },
                             "required": [
                               "type",
-                              "data",
-                              "action"
+                              "data"
                             ]
                           },
                           "_id": {
@@ -10676,10 +10985,6 @@
                           "templateIdentifier": {
                             "type": "string"
                           },
-                          "_feedId": {
-                            "type": "string",
-                            "nullable": true
-                          },
                           "channel": {
                             "type": "string"
                           },
@@ -10691,7 +10996,8 @@
                           },
                           "deviceTokens": {
                             "type": "array",
-                            "items": {}
+                            "items": {},
+                            "default": []
                           },
                           "seen": {
                             "type": "boolean"
@@ -10708,12 +11014,35 @@
                           "transactionId": {
                             "type": "string"
                           },
-                          "payload": {},
+                          "payload": {
+                            "type": "object",
+                            "properties": {
+                              "recordId": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "chatId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "recordId",
+                              "type",
+                              "description"
+                            ]
+                          },
                           "tags": {
                             "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
+                            "items": {},
+                            "default": []
                           },
                           "deleted": {
                             "type": "boolean"
@@ -10728,9 +11057,6 @@
                             "type": "number"
                           },
                           "lastSeenDate": {
-                            "type": "string"
-                          },
-                          "lastReadDate": {
                             "type": "string"
                           },
                           "subscriber": {
@@ -10764,9 +11090,7 @@
                               },
                               "tags": {
                                 "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
+                                "items": {}
                               },
                               "id": {
                                 "type": "string"
@@ -10778,6 +11102,7 @@
                               "id"
                             ]
                           },
+                          "actorSubscriber": {},
                           "id": {
                             "type": "string"
                           }
@@ -10793,9 +11118,7 @@
                           "_subscriberId",
                           "_jobId",
                           "templateIdentifier",
-                          "_feedId",
                           "channel",
-                          "content",
                           "providerId",
                           "deviceTokens",
                           "seen",
@@ -10808,8 +11131,6 @@
                           "createdAt",
                           "updatedAt",
                           "__v",
-                          "lastSeenDate",
-                          "lastReadDate",
                           "subscriber",
                           "template",
                           "id"

@@ -118,7 +118,7 @@
       "pages": [
         "api-reference/patients/get-patients-for-organization",
         "api-reference/patient/search-patients",
-        "api-reference/patient/get-patient-by-id"
+        "api-reference/patients/get-patient-by-id"
       ]
     },
     {

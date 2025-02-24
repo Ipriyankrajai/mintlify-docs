@@ -6401,6 +6401,15 @@
                   "isDemo": {
                     "type": "boolean",
                     "default": true
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "es",
+                      "ru"
+                    ],
+                    "default": "en"
                   }
                 },
                 "required": [
@@ -10178,6 +10187,18 @@
                             },
                             "sectionId": {
                               "type": "string"
+                            },
+                            "dependentQuestionId": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "skipValues": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "skipIfNull": {
+                              "type": "boolean",
+                              "nullable": true
                             }
                           },
                           "required": [
@@ -10193,7 +10214,10 @@
                             "possibleAnswers",
                             "jobAnswer",
                             "oasisType",
-                            "sectionId"
+                            "sectionId",
+                            "dependentQuestionId",
+                            "skipValues",
+                            "skipIfNull"
                           ]
                         }
                       }
@@ -10440,6 +10464,18 @@
                             },
                             "sectionId": {
                               "type": "string"
+                            },
+                            "dependentQuestionId": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "skipValues": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "skipIfNull": {
+                              "type": "boolean",
+                              "nullable": true
                             }
                           },
                           "required": [
@@ -10455,7 +10491,10 @@
                             "possibleAnswers",
                             "jobAnswer",
                             "oasisType",
-                            "sectionId"
+                            "sectionId",
+                            "dependentQuestionId",
+                            "skipValues",
+                            "skipIfNull"
                           ]
                         }
                       }
@@ -10753,6 +10792,18 @@
                               },
                               "sectionId": {
                                 "type": "string"
+                              },
+                              "dependentQuestionId": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "skipValues": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "skipIfNull": {
+                                "type": "boolean",
+                                "nullable": true
                               }
                             },
                             "required": [
@@ -10768,7 +10819,10 @@
                               "possibleAnswers",
                               "jobAnswer",
                               "oasisType",
-                              "sectionId"
+                              "sectionId",
+                              "dependentQuestionId",
+                              "skipValues",
+                              "skipIfNull"
                             ]
                           }
                         }

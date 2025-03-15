@@ -144,6 +144,14 @@
       ]
     },
     {
+      "group": "Survey",
+      "pages": [
+        "api-reference/survey/get-survey-response-for-a-voice-note",
+        "api-reference/survey/submit-voice-note-survey-answers",
+        "api-reference/survey/voice-note-survey"
+      ]
+    },
+    {
       "group": "Folders",
       "pages": [
         "api-reference/folder/list-folders",

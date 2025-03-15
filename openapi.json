@@ -8251,6 +8251,21 @@
                           null
                         ]
                       },
+                      "ingestionStatus": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "NOT_STARTED",
+                          "IN_PROGRESS",
+                          "ERROR",
+                          "COMPLETED",
+                          null
+                        ]
+                      },
+                      "ingestionPipelineId": {
+                        "type": "string",
+                        "nullable": true
+                      },
                       "record": {
                         "type": "string",
                         "enum": [
@@ -8364,6 +8379,72 @@
                           "createdAt",
                           "updatedAt"
                         ]
+                      },
+                      "attachments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "version": {
+                              "type": "integer"
+                            },
+                            "filename": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "key": {
+                              "type": "string"
+                            },
+                            "size": {
+                              "type": "integer"
+                            },
+                            "mimeType": {
+                              "type": "string"
+                            },
+                            "objectPath": {
+                              "type": "string"
+                            },
+                            "organizationId": {
+                              "type": "string"
+                            },
+                            "patientId": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "jobId": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "uploadedById": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "version",
+                            "filename",
+                            "key",
+                            "size",
+                            "mimeType",
+                            "objectPath",
+                            "organizationId",
+                            "createdAt",
+                            "updatedAt"
+                          ]
+                        }
                       }
                     },
                     "required": [
@@ -8371,7 +8452,8 @@
                       "record",
                       "organizationId",
                       "createdAt",
-                      "updatedAt"
+                      "updatedAt",
+                      "attachments"
                     ]
                   }
                 }
@@ -8642,6 +8724,21 @@
                         null
                       ]
                     },
+                    "ingestionStatus": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "NOT_STARTED",
+                        "IN_PROGRESS",
+                        "ERROR",
+                        "COMPLETED",
+                        null
+                      ]
+                    },
+                    "ingestionPipelineId": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "record": {
                       "type": "string",
                       "enum": [
@@ -8674,6 +8771,72 @@
                     "surgeContactId": {
                       "type": "string",
                       "nullable": true
+                    },
+                    "attachments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "version": {
+                            "type": "integer"
+                          },
+                          "filename": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "key": {
+                            "type": "string"
+                          },
+                          "size": {
+                            "type": "integer"
+                          },
+                          "mimeType": {
+                            "type": "string"
+                          },
+                          "objectPath": {
+                            "type": "string"
+                          },
+                          "organizationId": {
+                            "type": "string"
+                          },
+                          "patientId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "jobId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "uploadedById": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "version",
+                          "filename",
+                          "key",
+                          "size",
+                          "mimeType",
+                          "objectPath",
+                          "organizationId",
+                          "createdAt",
+                          "updatedAt"
+                        ]
+                      }
                     }
                   },
                   "required": [
@@ -8681,7 +8844,8 @@
                     "record",
                     "organizationId",
                     "createdAt",
-                    "updatedAt"
+                    "updatedAt",
+                    "attachments"
                   ]
                 }
               }
@@ -8820,6 +8984,8 @@
                 "medicareNumber",
                 "medicaidNumber",
                 "creationMode",
+                "ingestionStatus",
+                "ingestionPipelineId",
                 "record",
                 "stage",
                 "organizationId",
@@ -9036,6 +9202,21 @@
                               "AUTOMATED",
                               null
                             ]
+                          },
+                          "ingestionStatus": {
+                            "type": "string",
+                            "nullable": true,
+                            "enum": [
+                              "NOT_STARTED",
+                              "IN_PROGRESS",
+                              "ERROR",
+                              "COMPLETED",
+                              null
+                            ]
+                          },
+                          "ingestionPipelineId": {
+                            "type": "string",
+                            "nullable": true
                           },
                           "record": {
                             "type": "string",
@@ -9450,6 +9631,21 @@
                           null
                         ]
                       },
+                      "ingestionStatus": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": [
+                          "NOT_STARTED",
+                          "IN_PROGRESS",
+                          "ERROR",
+                          "COMPLETED",
+                          null
+                        ]
+                      },
+                      "ingestionPipelineId": {
+                        "type": "string",
+                        "nullable": true
+                      },
                       "record": {
                         "type": "string",
                         "enum": [
@@ -9549,12 +9745,128 @@
         }
       }
     },
+    "/v1/notes/{voiceNoteId}/survey-response": {
+      "get": {
+        "operationId": "surveys-getSurveyResponse",
+        "summary": "Get survey response for a voice note",
+        "tags": [
+          "Survey"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "voiceNoteId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "nullable": true,
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "voiceNoteId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "surveyId": {
+                      "type": "string"
+                    },
+                    "respondentId": {
+                      "type": "string"
+                    },
+                    "isCompleted": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "voiceNoteId",
+                    "createdAt",
+                    "surveyId",
+                    "respondentId",
+                    "isCompleted"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/notes/{voiceNoteId}/survey": {
       "post": {
         "operationId": "surveys-voiceNoteAudioSurvey",
         "summary": "Voice note survey",
         "tags": [
-          "Transcript"
+          "Survey"
         ],
         "security": [
           {
@@ -9852,7 +10164,7 @@
         "operationId": "surveys-submitVoiceNoteSurvey",
         "summary": "Submit voice note survey answers",
         "tags": [
-          "Transcript"
+          "Survey"
         ],
         "security": [
           {

@@ -10208,6 +10208,10 @@
                         "value"
                       ]
                     }
+                  },
+                  "isCompleted": {
+                    "type": "boolean",
+                    "default": false
                   }
                 },
                 "required": [

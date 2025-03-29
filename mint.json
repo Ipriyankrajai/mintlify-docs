@@ -127,7 +127,8 @@
         "api-reference/notes/list-notes",
         "api-reference/voice-notes/create-a-new-voice-note",
         "api-reference/voice-notes/update-voice-note-details",
-        "api-reference/voice-notes/delete-a-voice-note-and-related-records"
+        "api-reference/voice-notes/delete-a-voice-note-and-related-records",
+        "api-reference/voice-notes/get-voice-note-summaries-for-a-specific-voice-note-by-the-logged-in-user"
       ]
     },
     {

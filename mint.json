@@ -140,7 +140,8 @@
         "api-reference/transcript/search-sentences-by-embedding",
         "api-reference/transcript/save-voice-note-audio",
         "api-reference/transcript/generate-audio-upload-url",
-        "api-reference/transcript/generate-presigned-voice-note-audio-url"
+        "api-reference/transcript/generate-presigned-voice-note-audio-url",
+        "api-reference/transcript/get-list-of-questions-to-check-in-transcripts"
       ]
     },
     {

@@ -141,7 +141,8 @@
         "api-reference/transcript/save-voice-note-audio",
         "api-reference/transcript/generate-audio-upload-url",
         "api-reference/transcript/generate-presigned-voice-note-audio-url",
-        "api-reference/transcript/get-list-of-questions-to-check-in-transcripts"
+        "api-reference/transcript/get-list-of-questions-to-check-in-transcripts",
+        "api-reference/transcript/get-the-answered-status-of-predefined-questions-for-a-voice-note"
       ]
     },
     {

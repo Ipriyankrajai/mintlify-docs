@@ -210,6 +210,11 @@
       "post": {
         "operationId": "workflow-startWorkflowRun",
         "summary": "Start workflow run",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "parameters": [
           {
             "in": "path",
@@ -326,6 +331,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization not provided",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Insufficient access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
                 }
               }
             }
@@ -7798,6 +7823,17 @@
                               "firstname",
                               "lastname"
                             ]
+                          },
+                          "templateType": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "transcript",
+                                "narrative",
+                                "oasis"
+                              ]
+                            }
                           }
                         },
                         "required": [
@@ -7805,7 +7841,8 @@
                           "title",
                           "createdAt",
                           "user",
-                          "patient"
+                          "patient",
+                          "templateType"
                         ]
                       }
                     },
@@ -10608,7 +10645,7 @@
     },
     "/v1/oasis/getOasisByJobId": {
       "get": {
-        "operationId": "oasis-getOasisByJobId",
+        "operationId": "oasisPublic-getOasisByJobId",
         "summary": "Get OASIS by job ID",
         "tags": [
           "OASIS"
@@ -10885,7 +10922,7 @@
     },
     "/v1/oasis/getOasisByVoiceNoteId": {
       "get": {
-        "operationId": "oasis-getOasisByVoiceNoteId",
+        "operationId": "oasisPublic-getOasisByVoiceNoteId",
         "summary": "Get OASIS by voice note ID",
         "tags": [
           "OASIS"
@@ -11162,7 +11199,7 @@
     },
     "/v1/oasis/saveOasisForJob": {
       "post": {
-        "operationId": "oasis-saveOasisForJob",
+        "operationId": "oasisPublic-saveOasisForJob",
         "summary": "Save OASIS for a job",
         "tags": [
           "OASIS"
@@ -13406,7 +13443,7 @@
           "message",
           "code"
         ],
-        "title": "Error",
+        "title": "Invalid input data error (400)",
         "description": "The error information",
         "example": {
           "code": "BAD_REQUEST",
@@ -13448,7 +13485,7 @@
           "message",
           "code"
         ],
-        "title": "Error",
+        "title": "Authorization not provided error (401)",
         "description": "The error information",
         "example": {
           "code": "UNAUTHORIZED",
@@ -13490,7 +13527,7 @@
           "message",
           "code"
         ],
-        "title": "Error",
+        "title": "Insufficient access error (403)",
         "description": "The error information",
         "example": {
           "code": "FORBIDDEN",
@@ -13532,7 +13569,7 @@
           "message",
           "code"
         ],
-        "title": "Error",
+        "title": "Not found error (404)",
         "description": "The error information",
         "example": {
           "code": "NOT_FOUND",
@@ -13574,7 +13611,7 @@
           "message",
           "code"
         ],
-        "title": "Error",
+        "title": "Internal server error error (500)",
         "description": "The error information",
         "example": {
           "code": "INTERNAL_SERVER_ERROR",

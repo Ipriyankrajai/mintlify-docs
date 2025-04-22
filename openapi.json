@@ -10940,6 +10940,20 @@
               "type": "string"
             },
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "sectionId",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "getAllSections",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -10948,198 +10962,211 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "sectionId": {
-                        "type": "string"
-                      },
-                      "sectionTitle": {
-                        "type": "string"
-                      },
-                      "sectionCode": {
-                        "type": "string"
-                      },
-                      "questions": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string"
-                            },
-                            "code": {
-                              "type": "string"
-                            },
-                            "title": {
-                              "type": "string"
-                            },
-                            "description": {
-                              "type": "string"
-                            },
-                            "isAbstract": {
-                              "type": "boolean",
-                              "nullable": true
-                            },
-                            "order": {
-                              "type": "number"
-                            },
-                            "parentId": {
-                              "type": "string",
-                              "nullable": true
-                            },
-                            "answerType": {
-                              "type": "string"
-                            },
-                            "dataType": {
-                              "type": "string"
-                            },
-                            "possibleAnswers": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  },
-                                  "title": {
-                                    "type": "string"
-                                  },
-                                  "desc": {
-                                    "type": "string",
-                                    "nullable": true
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "value",
-                                  "title",
-                                  "desc"
-                                ]
-                              }
-                            },
-                            "jobAnswer": {
+                  "type": "object",
+                  "properties": {
+                    "oasis": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "sectionId": {
+                            "type": "string"
+                          },
+                          "sectionTitle": {
+                            "type": "string"
+                          },
+                          "sectionCode": {
+                            "type": "string"
+                          },
+                          "questions": {
+                            "type": "array",
+                            "items": {
                               "type": "object",
                               "properties": {
-                                "originalAnswer": {
-                                  "anyOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "string"
-                                      }
-                                    }
-                                  ]
+                                "id": {
+                                  "type": "string"
                                 },
-                                "enzoAnswer": {
-                                  "anyOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "string"
-                                      }
-                                    }
-                                  ]
+                                "code": {
+                                  "type": "string"
                                 },
-                                "finalAnswer": {
-                                  "anyOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "string"
-                                      }
-                                    }
-                                  ]
+                                "title": {
+                                  "type": "string"
                                 },
-                                "reason": {
-                                  "anyOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "string"
-                                      }
-                                    }
-                                  ]
+                                "description": {
+                                  "type": "string"
                                 },
-                                "originalOrder": {
+                                "isAbstract": {
+                                  "type": "boolean",
+                                  "nullable": true
+                                },
+                                "order": {
                                   "type": "number"
                                 },
-                                "enzoOrder": {
-                                  "type": "number"
+                                "parentId": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "answerType": {
+                                  "type": "string"
+                                },
+                                "dataType": {
+                                  "type": "string"
+                                },
+                                "possibleAnswers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "value": {
+                                        "type": "string"
+                                      },
+                                      "title": {
+                                        "type": "string"
+                                      },
+                                      "desc": {
+                                        "type": "string",
+                                        "nullable": true
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "value",
+                                      "title",
+                                      "desc"
+                                    ]
+                                  }
+                                },
+                                "jobAnswer": {
+                                  "type": "object",
+                                  "properties": {
+                                    "originalAnswer": {
+                                      "anyOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "enzoAnswer": {
+                                      "anyOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "finalAnswer": {
+                                      "anyOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "reason": {
+                                      "anyOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "originalOrder": {
+                                      "type": "number"
+                                    },
+                                    "enzoOrder": {
+                                      "type": "number"
+                                    }
+                                  }
+                                },
+                                "oasisType": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "SOC_ROC",
+                                      "FOLLOW_UP",
+                                      "DISCHARGE"
+                                    ]
+                                  }
+                                },
+                                "sectionId": {
+                                  "type": "string"
+                                },
+                                "dependentQuestionId": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "skipValues": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "skipIfNull": {
+                                  "type": "boolean",
+                                  "nullable": true
                                 }
-                              }
-                            },
-                            "oasisType": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "enum": [
-                                  "SOC_ROC",
-                                  "FOLLOW_UP",
-                                  "DISCHARGE"
-                                ]
-                              }
-                            },
-                            "sectionId": {
-                              "type": "string"
-                            },
-                            "dependentQuestionId": {
-                              "type": "string",
-                              "nullable": true
-                            },
-                            "skipValues": {
-                              "type": "string",
-                              "nullable": true
-                            },
-                            "skipIfNull": {
-                              "type": "boolean",
-                              "nullable": true
+                              },
+                              "required": [
+                                "id",
+                                "code",
+                                "title",
+                                "description",
+                                "isAbstract",
+                                "order",
+                                "parentId",
+                                "answerType",
+                                "dataType",
+                                "possibleAnswers",
+                                "jobAnswer",
+                                "oasisType",
+                                "sectionId",
+                                "dependentQuestionId",
+                                "skipValues",
+                                "skipIfNull"
+                              ]
                             }
-                          },
-                          "required": [
-                            "id",
-                            "code",
-                            "title",
-                            "description",
-                            "isAbstract",
-                            "order",
-                            "parentId",
-                            "answerType",
-                            "dataType",
-                            "possibleAnswers",
-                            "jobAnswer",
-                            "oasisType",
-                            "sectionId",
-                            "dependentQuestionId",
-                            "skipValues",
-                            "skipIfNull"
-                          ]
-                        }
+                          }
+                        },
+                        "required": [
+                          "sectionId",
+                          "sectionTitle",
+                          "sectionCode",
+                          "questions"
+                        ]
                       }
                     },
-                    "required": [
-                      "sectionId",
-                      "sectionTitle",
-                      "sectionCode",
-                      "questions"
-                    ]
-                  }
+                    "nextSectionId": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "oasis",
+                    "nextSectionId"
+                  ]
                 }
               }
             }

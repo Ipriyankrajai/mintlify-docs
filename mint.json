@@ -184,6 +184,12 @@
         "api-reference/subscribers/get-count-of-unseen-notifications-for-a-subscriber",
         "api-reference/subscribers/mark-a-notification-as-seen-andor-read"
       ]
+    },
+    {
+      "group": "User",
+      "pages": [
+        "api-reference/user/delete-user"
+      ]
     }
   ],
   "footerSocials": {

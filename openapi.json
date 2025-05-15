@@ -7741,6 +7741,13 @@
                 "archived"
               ]
             }
+          },
+          {
+            "in": "query",
+            "name": "patientId",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -12055,7 +12062,7 @@
     },
     "/v1/user": {
       "delete": {
-        "operationId": "user-deleteOrganizationUser",
+        "operationId": "user-permanentlyDeleteUser",
         "summary": "Delete User",
         "tags": [
           "User"

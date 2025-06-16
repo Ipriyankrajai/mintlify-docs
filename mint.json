@@ -182,6 +182,10 @@
         "api-reference/user/delete-user",
         "api-reference/user/reset-password"
       ]
+    },
+    {
+      "group": "esign",
+      "pages": ["api-reference/esign/fill-a-reusable-template"]
     }
   ],
   "footerSocials": {
